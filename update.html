@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Applying</title>
+</head>
+<body bgcolor="#EEEEEE">
+<font face="Times New Roman" color="black">
+<center>
+<h1><p id="wait_text"></p></h1>
+<img src="images/wait.gif">
+</center>
+</font>
+<script>
+	var query = window.location.search;
+	var params = new URLSearchParams(query);
+
+	var delay;
+	var time_str = params.get('time');
+	var text_str = params.get('text');
+
+	if (time_str != null)
+	{
+		delay = parseInt(time_str) * 1000;
+	}
+	else
+	{
+		delay = 100 * 1000;
+	}
+
+	if (text_str != null)
+	{
+		document.getElementById("wait_text").innerHTML = text_str;
+	}
+	else
+	{
+		document.getElementById("wait_text").innerHTML = "Please wait for your changes to be applied.";
+	}
+	setTimeout(function() {
+		window.location = "http://" + window.location.hostname + "/";
+	}, delay);
+</script>
+</body>
+</html>
